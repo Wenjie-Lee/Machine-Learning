@@ -17,15 +17,20 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-    hypothesis = theta(1) * X(:, 1) + theta(2) * X(:, 2);
-    temp = (hypothesis - y) .* X;
+    %    由多参数的来的基于线性代数的更优化方法
+    hypothesis = X * theta;
+    update = X' * (hypothesis - y);
 
-    temp1 = theta(1) - alpha * sum(temp(:, 1)) / m;     % 同步更新theta1 和 theta2
-    temp2 = theta(2) - alpha * sum(temp(:, 2)) / m;
+    theta = theta - alpha * update / m;
 
-    theta(1) = temp1;
-    theta(2) = temp2;
-    % sprintf("iteration: %d   theta1: %d theta2: %d", iter, temp1, temp2)
+    %    旧方法
+    % hypothesis = theta(1) * X(:, 1) + theta(2) * X(:, 2);
+    % temp = (hypothesis - y) .* X;
+    % temp1 = theta(1) - alpha * sum(temp(:, 1)) / m;     % 同步更新theta1 和 theta2
+    % temp2 = theta(2) - alpha * sum(temp(:, 2)) / m;
+    % theta(1) = temp1;
+    % theta(2) = temp2;
+
     % ============================================================
 
     % Save the cost J in every iteration    

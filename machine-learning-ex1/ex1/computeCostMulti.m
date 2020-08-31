@@ -14,9 +14,9 @@ J = 0;
 %               You should set J to the cost.
 
 hypothesis = X * theta;
-temp = hypothesis - y;
-J = temp' * temp / (2 * m);
-% equivalent to 'J = (temp).^2 / (2 * m);'
+prediction = hypothesis - y;
+J = prediction' * prediction / (2 * m);
+% equivalent to 'J = (prediction).^2 / (2 * m);'
 
 % =========================================================================
 

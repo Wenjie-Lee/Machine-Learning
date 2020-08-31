@@ -20,7 +20,6 @@ for iter = 1:num_iters
     hypothesis = X * theta;
     update = X' * (hypothesis - y);
 
-    num = size(X, 2);           % 属性的个数,算上x0
     theta = theta - alpha * update / m;
 
     % ============================================================

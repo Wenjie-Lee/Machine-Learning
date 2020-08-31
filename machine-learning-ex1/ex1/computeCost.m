@@ -13,10 +13,12 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-hypothesis = theta(1) * X(:, 1) + theta(2) * X(:, 2);
-temp = hypothesis - y;
-J = temp' * temp / (2 * m);
+%   根据多参数得来的更简洁，更快速的方法
+hypothesis = X * theta;
+prediction = hypothesis - y;
+J = prediction' * prediction / (2 * m);
 
+%   旧方法
 % hypothesis = theta(1) * X(:, 1) + theta(2) * X(:, 2);   % 保留hypothesis为一个m×1的向量
 % temp1 = (hypothesis - y).^2;                   % 执行（h-y）^2，得到一个m×1向量
 % temp2 = sum(temp1);                             % 执行Σtemp1
