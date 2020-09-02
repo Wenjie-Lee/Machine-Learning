@@ -12,12 +12,16 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+pos = find(y == 1);         %   找到所有y=1的点的索引
+neg = find(y == 0);
 
+plot(X(pos, 1), X(pos, 2), 'k+', 'LineWidth', 2, 'MarkerSize', 7); %   X是数据
+plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 
+xlabel('Exam1 score');
+ylabel('Exam2 score');
 
-
-
-
+legend('Admitted', 'Not admitted');
 
 
 % =========================================================================
