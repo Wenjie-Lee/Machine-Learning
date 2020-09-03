@@ -22,7 +22,8 @@ xlabel('Exam1 score');
 ylabel('Exam2 score');
 
 legend('Admitted', 'Not admitted');
-
+legend("boxoff");       % 'boxoff' 去除边线
+title("Scatter plot of training data");
 
 % =========================================================================
 
