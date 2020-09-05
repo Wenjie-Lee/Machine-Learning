@@ -36,14 +36,20 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+% computing J
+hypo = sigmoid(X * theta);
+preg1 = -y' * log(hypo) - (1 - y)' * log(1 - hypo);
 
+theta = [0; theta(2:end, :)];
+% reg1 = lambda * theta' * theta;
+reg1 = lambda * sum(theta.^2);      % equivalent
 
+J = preg1 / m + reg1 / (2 * m);
 
-
-
-
-
-
+% computing gradient
+update = X' * (hypo - y);
+reg2 = lambda * theta;
+grad = (update + reg2) / m;
 
 % =============================================================
 

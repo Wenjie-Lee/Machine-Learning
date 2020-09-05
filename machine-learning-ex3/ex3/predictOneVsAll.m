@@ -28,13 +28,13 @@ X = [ones(m, 1) X];
 %       max element, for more information see 'help max'. If your examples 
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
-%       
+%
 
+% X is a m by (n+1) matrix; all_theta is a (all_theta) by (n+1) matrix
+% X * all_theta' is a m by num_labels matrix
+% Amax is the max value vector, p is a vector of the index of each Amax value
 
-
-
-
-
+[Amax, p] = max(sigmoid(X * all_theta'), [], 2);
 
 % =========================================================================
 
