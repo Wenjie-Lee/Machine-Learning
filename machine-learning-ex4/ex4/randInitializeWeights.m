@@ -19,12 +19,11 @@ W = zeros(L_out, 1 + L_in);
 % Note: The first column of W corresponds to the parameters for the bias unit
 %
 
+epsilon_init = 0.12;
 
-
-
-
-
-
+% rand(a, b) create a matrix a*b
+% [0, 1] * 2*epsilon → [0, 2*epsilon], -epsilon → [-ep, ep]
+W = rand(L_out, 1 + L_in) * 2 * epsilon_init - epsilon_init;
 
 
 % =========================================================================
