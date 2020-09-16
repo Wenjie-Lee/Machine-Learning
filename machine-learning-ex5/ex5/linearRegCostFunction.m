@@ -20,15 +20,20 @@ grad = zeros(size(theta));
 %
 
 
+% ----- computing J
+hypo = X * theta;
+% J = J + (sum((hypo - y).^2)) / (2 * m);
+pre = hypo - y;
+J =  (pre' * pre) / (2 * m);
 
+% ----- add the regularized part
+% *** regularized part don`t go the bias unit
+theta_reg = [0; theta(2:end, :)];
+reg = lambda * sum(theta_reg.^2) / (2 * m);
+J = J + reg;
 
-
-
-
-
-
-
-
+% ----- computing the regularized gradient
+grad = (X' * pre + lambda * theta_reg) / m;
 
 % =========================================================================
 
