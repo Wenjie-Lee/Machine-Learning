@@ -6,7 +6,11 @@ function [Xs, ys] = shuffle(X, y)
     Xs = X;
     ys = y;
     for i = 1:m
+<<<<<<< Updated upstream
         k = round(rand() * m);
+=======
+        k = round(rand() * (m-1)) + 1;
+>>>>>>> Stashed changes
         Xs(i, :) = Xs(k, :);
         Xs(k, :) = X(i, :);
         ys(i) = ys(k);
