@@ -23,9 +23,12 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+% look at the following files
+% selectCandSigmoid.m
+% test.m
 
-
-
+C = 1;
+sigma = 0.1;
 
 
 
