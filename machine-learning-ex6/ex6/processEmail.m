@@ -27,14 +27,20 @@ email_contents = lower(email_contents);
 % Strip all HTML
 % Looks for any expression that starts with < and ends with > and replace
 % and does not have any < or > in the tag it with a space
+% [^<>]+ 表示任何<>内且包括<>的字符串
 email_contents = regexprep(email_contents, '<[^<>]+>', ' ');
 
 % Handle Numbers
 % Look for one or more characters between 0-9
+% [0-9]+ 表示任何0~9的数字字符串
 email_contents = regexprep(email_contents, '[0-9]+', 'number');
 
 % Handle URLS
 % Look for strings starting with http:// or https://
+% (strA|strB) 表示以...开头的字符串，\s 表示匹配任何不可见符，包括换行符、制表符、换页符；
+% \S 表示匹配任何可见字符
+% * 表示匹配前面的子表达式任意次， 例如，zo*能匹配“z”，也能匹配“zo”以及“zooooo”
+% + 表示匹配前面的子表达式至少1次，例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”1次
 email_contents = regexprep(email_contents, ...
                            '(http|https)://[^\s]*', 'httpaddr');
 
@@ -97,14 +103,12 @@ while ~isempty(email_contents)
     %       str2). It will return 1 only if the two strings are equivalent.
     %
 
-
-
-
-
-
-
-
-
+    for i = 1:length(vocabList)
+        if strcmp(str, vocabList(i)) == 1
+            word_indices = [word_indices; i];
+            % word_indices only contain indices of words, not words themselves
+        end
+    end
 
     % =============================================================
 
