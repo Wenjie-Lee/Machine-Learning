@@ -41,19 +41,27 @@ Theta_grad = zeros(size(Theta));
 %
 
 
+% Cost Function
+%        predictions - movies x users
+predictions = (X * Theta' - Y) .* R;
+
+J = J + sum(sum(predictions.^2)) / 2;
 
 
+% Gradient Descent
+% (movies x users) X (users x features) = movies x features
+X_grad = predictions * Theta;
+% (movies x users)' X (movies x features) = users x features
+Theta_grad = predictions' * X;
 
 
+% Regularizing
+J = J + lambda * (sum(sum(Theta.^2)) + sum(sum(X.^2))) / 2;
 
-
-
-
-
-
-
-
-
+% Regularization for Gradient Descient 
+% no need to ignore Theta(:, 1) and X(:, 1)
+X_grad = X_grad + lambda * X;
+Theta_grad = Theta_grad + lambda * Theta;
 
 % =============================================================
 
